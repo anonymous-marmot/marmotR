@@ -6,11 +6,14 @@
 \usage{
 search(
   query = "",
+  limit = 50,
   baseurl = httr::parse_url("http://marmot-proxy2-dev.us-east-2.elasticbeanstalk.com")
 )
 }
 \arguments{
 \item{query}{The query in marmot query syntax.}
+
+\item{limit}{The maximum number of results.}
 
 \item{baseurl}{The base URL of a marmot service.}
 }

@@ -47,14 +47,15 @@ retrieve <- function(id = "", baseurl = httr::parse_url("http://marmot-proxy2-de
 #' Search for matching packages.
 #' 
 #' @param query The query in marmot query syntax.
+#' @param limit The maximum number of results. 
 #' @param baseurl The base URL of a marmot service.
 #' @return A list containing the request data.
 #' @examples 
 #' marmotR::search("[metrics.bytecode.ret]>0")
 #' @export
-search <- function(query = "", baseurl = httr::parse_url("http://marmot-proxy2-dev.us-east-2.elasticbeanstalk.com")) {
+search <- function(query = "", limit = 50, baseurl = httr::parse_url("http://marmot-proxy2-dev.us-east-2.elasticbeanstalk.com")) {
     url <- httr::modify_url(baseurl, path = paste(baseurl$path, "/search", sep = ""))
-    resp <- httr::POST(url, body = list(query = query), encode = "json")
+    resp <- httr::POST(url, body = list(query = query, limit = limit), encode = "json")
     respText <- httr::content(resp, "text", encoding = "UTF-8")
     if (httr::http_type(resp) != "application/json") {
         warning(paste('API did not return json.', respText), call. = FALSE)

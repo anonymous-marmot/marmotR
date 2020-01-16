@@ -8,4 +8,8 @@
 \description{
 This is the R connector package for the Marmot project.
 }
+\author{
+\strong{Maintainer}: Anonymous Marmot \email{anonymous@marmot.com}
+
+}
 \keyword{internal}
